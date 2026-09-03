@@ -14,14 +14,14 @@ export const sendVerificationEmail = async (
   }
 
   const { data, error } = await resend.emails.send({
-    from: "do-not-reply@crosscurrent.ae",
+    from: "do-not-reply@sampledomain.ae",
     to,
-    subject: "Verify your email | CrossCurrent",
-    text: `Welcome to CrossCurrent! Please verify your email address by opening this link: ${verificationUrl}`,
+    subject: "Verify your email | sampledomain",
+    text: `Welcome to sampledomain! Please verify your email address by opening this link: ${verificationUrl}`,
     html: `
       <div style="font-family: Arial, sans-serif; padding: 24px;">
         <h2 style="color: #1a1a1a;">Verify your email</h2>
-        <p style="color: #333;">Welcome to CrossCurrent! Please confirm your email address to activate your account.</p>
+        <p style="color: #333;">Welcome to sampledomain! Please confirm your email address to activate your account.</p>
         <a href="${verificationUrl}" style="display: inline-block; margin: 16px 0; padding: 12px 24px; background-color: #525252; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold;">
           Verify email
         </a>
@@ -49,14 +49,14 @@ export const sendPasswordResetEmail = async (
   }
 
   const { data, error } = await resend.emails.send({
-    from: "do-not-reply@crosscurrent.ae",
+    from: "do-not-reply@sampledomain.ae",
     to,
-    subject: "Reset your password | CrossCurrent",
+    subject: "Reset your password | sampledomain",
     text: `You requested a password reset. Please open this link to set a new password: ${resetUrl}`,
     html: `
       <div style="font-family: Arial, sans-serif; padding: 24px;">
         <h2 style="color: #1a1a1a;">Reset your password</h2>
-        <p style="color: #333;">We received a request to reset the password for your CrossCurrent account.</p>
+        <p style="color: #333;">We received a request to reset the password for your sampledomain account.</p>
         <a href="${resetUrl}" style="display: inline-block; margin: 16px 0; padding: 12px 24px; background-color: #525252; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold;">
           Reset password
         </a>

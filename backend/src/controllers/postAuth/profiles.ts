@@ -40,17 +40,17 @@ profilesHandler.get("/:id", async (req, res) => {
     throw new AppError("Profile not found", 404);
   }
 
-  const isLeader = req.user!.role === "LEADER" || req.user!.role === "ADMIN";
+  const isAdmin = req.user!.role === "ADMIN";
 
   const data = {
     id: profile.id,
     name: profile.name,
-    email: isLeader ? profile.user.email : "",
-    phone: isLeader ? (profile.phone || "") : "",
-    role: profile.role || "STUDENT",
-    gender: isLeader ? (profile.gender || "") : "",
-    nationality: isLeader ? (profile.nationality || "") : "",
-    dob: isLeader ? (profile.dob?.toISOString() || "") : "",
+    email: isAdmin ? profile.user.email : "",
+    phone: isAdmin ? (profile.phone || "") : "",
+    role: profile.role || "USER",
+    gender: isAdmin ? (profile.gender || "") : "",
+    nationality: isAdmin ? (profile.nationality || "") : "",
+    dob: isAdmin ? (profile.dob?.toISOString() || "") : "",
     firstTime: profile.firstTime,
   };
 

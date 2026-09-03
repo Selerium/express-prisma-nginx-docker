@@ -1,4 +1,4 @@
-import { Role, Gender } from "../generated/prisma/client.ts";
+import { Role, Gender } from "../src/generated/prisma/client.ts";
 import bcrypt from "bcryptjs";
 import { prisma } from "../src/lib/prismaClient.ts";
 
@@ -9,33 +9,33 @@ async function main() {
 
   const usersData = [
     {
-      email: "admin@crosscurrent.com",
+      email: "admin@sampledomain.com",
       name: "John Smith",
       role: Role.ADMIN,
       gender: Gender.MALE,
     },
     {
-      email: "sarah@crosscurrent.com",
+      email: "sarah@sampledomain.com",
       name: "Sarah Johnson",
-      role: Role.LEADER,
+      role: Role.USER,
       gender: Gender.FEMALE,
     },
     {
-      email: "mike@crosscurrent.com",
+      email: "mike@sampledomain.com",
       name: "Mike Davis",
-      role: Role.LEADER,
+      role: Role.USER,
       gender: Gender.MALE,
     },
     {
-      email: "emma@crosscurrent.com",
+      email: "emma@sampledomain.com",
       name: "Emma Wilson",
-      role: Role.STUDENT,
+      role: Role.USER,
       gender: Gender.FEMALE,
     },
     {
-      email: "jake@crosscurrent.com",
+      email: "jake@sampledomain.com",
       name: "Jake Thompson",
-      role: Role.STUDENT,
+      role: Role.USER,
       gender: Gender.MALE,
     },
   ];

@@ -6,6 +6,7 @@ import bcrypt from "bcryptjs";
 import registerHandler from "./controllers/register.ts";
 import loginHandler from "./controllers/login.ts";
 import emailVerificationHandler from "./controllers/emailVerification.ts";
+import resendVerificationHandler from "./controllers/resendVerification.ts";
 import forgotPasswordHandler from "./controllers/forgotPassword.ts";
 import resetPasswordHandler from "./controllers/resetPassword.ts";
 import errorHandler from "./middleware/errorHandler.ts";
@@ -15,7 +16,7 @@ import { prisma } from "./lib/prismaClient.ts";
 const app = express();
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: process.env.PROD === "true" ? process.env.FRONTEND_URL : "http://localhost:3000",
   credentials: true,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -35,6 +36,7 @@ app.get("/test", (req, res) => {
 app.use("/register", registerHandler);
 app.use("/login", loginHandler);
 app.use("/verify-email", emailVerificationHandler);
+app.use("/resend-verification", resendVerificationHandler);
 app.use("/forgot-password", forgotPasswordHandler);
 app.use("/reset-password", resetPasswordHandler);
 app.post("/logout", async (req, res) => {

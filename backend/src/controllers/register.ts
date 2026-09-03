@@ -4,7 +4,7 @@ import crypto from "crypto";
 import isEmail from "validator/lib/isEmail.js";
 import AppError from "../lib/appError.ts";
 import { prisma, Role } from "../lib/prismaClient.ts";
-import { Prisma } from "../../generated/prisma/client.ts";
+import { Prisma } from "../generated/prisma/client.ts";
 import { sendVerificationEmail } from "../lib/email.ts";
 
 const registerHandler = express.Router();
@@ -32,7 +32,7 @@ registerHandler.post("", async (req, res) => {
         profile: {
           create: {
             name: fullName,
-            role: Role.STUDENT,
+            role: Role.USER,
           },
         },
       },

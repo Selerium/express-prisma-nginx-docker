@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -60,7 +60,7 @@ model Profile {
   name      String
   firstTime Boolean @default(true)
 
-  role   Role?   @default(STUDENT)
+  role   Role?   @default(USER)
   gender Gender?
   dob    DateTime?
   nationality String?
@@ -73,7 +73,6 @@ enum Gender {
 }
 
 enum Role {
-  STUDENT
-  LEADER
+  USER
   ADMIN
 }

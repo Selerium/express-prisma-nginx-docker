@@ -1,4 +1,4 @@
-import { PrismaClient, Role } from "../../generated/prisma/client.ts";
+import { PrismaClient, Role } from "../generated/prisma/client.ts";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const connectionString = process.env.DATABASE_URL;

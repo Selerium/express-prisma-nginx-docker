@@ -1,11 +1,8 @@
--- CreateSchema
-CREATE SCHEMA IF NOT EXISTS "public";
-
 -- CreateEnum
 CREATE TYPE "Gender" AS ENUM ('MALE', 'FEMALE');
 
 -- CreateEnum
-CREATE TYPE "Role" AS ENUM ('STUDENT', 'LEADER', 'ADMIN');
+CREATE TYPE "Role" AS ENUM ('USER', 'ADMIN');
 
 -- CreateTable
 CREATE TABLE "RefreshTokens" (
@@ -55,7 +52,7 @@ CREATE TABLE "Profile" (
     "userId" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "firstTime" BOOLEAN NOT NULL DEFAULT true,
-    "role" "Role" DEFAULT 'STUDENT',
+    "role" "Role" DEFAULT 'USER',
     "gender" "Gender",
     "dob" TIMESTAMP(3),
     "nationality" TEXT,
@@ -90,4 +87,3 @@ ALTER TABLE "PasswordResetToken" ADD CONSTRAINT "PasswordResetToken_userId_fkey"
 
 -- AddForeignKey
 ALTER TABLE "Profile" ADD CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-

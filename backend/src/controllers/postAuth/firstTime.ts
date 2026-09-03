@@ -11,15 +11,10 @@ firstTimeHandler.post("", async (req, res) => {
     dob,
     nationality,
     phone,
-    role,
   } = req.body;
 
-  if (!gender || !dob || !nationality || !phone || !role) {
+  if (!gender || !dob || !nationality || !phone) {
     throw new AppError("Missing required fields", 400);
-  }
-
-  if (role !== "STUDENT" && role !== "LEADER") {
-    throw new AppError("Invalid role", 400);
   }
 
   const data: Record<string, unknown> = {
@@ -27,7 +22,6 @@ firstTimeHandler.post("", async (req, res) => {
     dob: new Date(dob),
     nationality,
     phone,
-    role,
     firstTime: false,
   };
 
