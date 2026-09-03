@@ -1,6 +1,16 @@
 # express-prisma-nginx-docker
 A simple template for immediately spinning up an Express.js/PostgreSQL backend with an NGINX proxy. Comes with user management (customizable in `schema.prisma`), auth APIs, and email sending functionality through Resend API.
 
+## available flows
+- register
+- login
+- forgot password
+- verify email
+- profile
+- settings (with change password and change email)
+- navbar
+- onboarding (first-time login)
+
 ## what's in this
 - Express.js backend
 - Prisma ORM
