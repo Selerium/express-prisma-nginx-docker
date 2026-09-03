@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model RefreshTokens {
+  id        String    @id @default(uuid())
+  userId    String
+  tokenHash String    @unique
+  ip        String?
+  createdAt DateTime  @default(now())
+  expiresAt DateTime  @default(dbgenerated("(now() + '7 days'::interval)"))
+  revokedAt DateTime?
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model User {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  email                           String               @unique
+  emailVerified                   Boolean              @default(false)
+  emailVerificationToken          String?
+  emailVerificationTokenExpiresAt DateTime?
+  password                        String
+  refreshTokens                   RefreshTokens[]
+  passwordResetTokens             PasswordResetToken[]
+
+  profile Profile?
+}
+
+model Profile {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  name      String
+  firstTime Boolean @default(true)
+
+  role   Role?   @default(STUDENT)
+  gender Gender?
+  dob    DateTime?
+  nationality String?
+  phone       String?
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum Role {
+  STUDENT
+  LEADER
+  ADMIN
+}
