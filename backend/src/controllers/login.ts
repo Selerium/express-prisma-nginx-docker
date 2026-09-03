@@ -64,7 +64,7 @@ loginHandler.post("", async (req, res) => {
 
       res.cookie('access_token', accessToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: process.env.PROD === "true",
         sameSite: 'lax',
         domain: process.env.COOKIE_DOMAIN ?? undefined,
         path: '/',
@@ -72,7 +72,7 @@ loginHandler.post("", async (req, res) => {
       })
       res.cookie('refresh_token', refreshToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: process.env.PROD === "true",
         sameSite: 'lax',
         domain: process.env.COOKIE_DOMAIN ?? undefined,
         path: '/',

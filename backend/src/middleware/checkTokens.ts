@@ -105,7 +105,7 @@ const checkTokens = async (req, res, next) => {
 
     res.cookie('access_token', newAccessToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: process.env.PROD === "true",
         sameSite: 'lax',
         domain: process.env.COOKIE_DOMAIN ?? undefined,
         path: '/',
@@ -113,7 +113,7 @@ const checkTokens = async (req, res, next) => {
     });
     res.cookie('refresh_token', newRefreshToken, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: process.env.PROD === "true",
         sameSite: 'lax',
         domain: process.env.COOKIE_DOMAIN ?? undefined,
         path: '/',

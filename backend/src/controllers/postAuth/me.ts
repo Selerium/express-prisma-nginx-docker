@@ -32,7 +32,7 @@ meHandler.get("", async (req, res) => {
 
   res.cookie("access_token", accessToken, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: process.env.PROD === "true",
     sameSite: "lax",
     domain: process.env.COOKIE_DOMAIN ?? undefined,
     path: "/",

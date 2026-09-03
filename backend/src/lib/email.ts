@@ -1,13 +1,16 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : "";
+
 
 export const sendVerificationEmail = async (
   to: string,
   verificationUrl: string
 ) => {
-  if (process.env.NODE_ENV !== "production") {
+  if (process.env.PROD === "false") {
     console.log(`[email] verification link for ${to}: ${verificationUrl}`);
+    return ;
   }
 
   const { data, error } = await resend.emails.send({
@@ -40,8 +43,9 @@ export const sendPasswordResetEmail = async (
   to: string,
   resetUrl: string
 ) => {
-  if (process.env.NODE_ENV !== "production") {
+  if (process.env.PROD === "false") {
     console.log(`[email] password reset link for ${to}: ${resetUrl}`);
+    return ;
   }
 
   const { data, error } = await resend.emails.send({
