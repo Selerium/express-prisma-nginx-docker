@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import FormField from "@/components/form/formField";
 import DateField from "@/components/form/dateField";
+import CountrySelector from "@/components/form/countrySelector";
 
 const onboardingSchema = z.object({
   gender: z.enum(["MALE", "FEMALE"]),
@@ -104,7 +105,7 @@ export default function OnboardingPage() {
 
               <DateField name="dob" label="Date of Birth" />
 
-              <FormField name="nationality" label="Nationality" placeholder="Nationality" />
+              <CountrySelector name="nationality" />
 
               <FormField name="phone" label="Phone" type="tel" placeholder="Phone Number" />
 

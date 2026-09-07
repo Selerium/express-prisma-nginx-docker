@@ -7,6 +7,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import FormField from "@/components/form/formField";
+import CountrySelector from "@/components/form/countrySelector";
 
 interface Profile {
   createdAt: string;
@@ -101,7 +102,7 @@ export default function ProfilePage() {
 
               <FormField name="phone" label="Phone" type="tel" />
 
-              <FormField name="nationality" label="Nationality" />
+              <CountrySelector name="nationality" />
 
               <div className="text-sm text-base-content/60">
                 <p>Email: {profile?.user.email}</p>
