@@ -4,8 +4,6 @@ A Dockerized backend starter for building Express applications with PostgreSQL, 
 
 The goal is to provide a reusable application foundation rather than repeatedly rebuilding the same backend and infrastructure setup.
 
-(note: this code is provided for portfolio review only. Please see the LICENSE file for restrictions on use.)
-
 ## Architecture
 
 ```text
